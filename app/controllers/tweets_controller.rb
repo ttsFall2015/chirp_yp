@@ -13,13 +13,13 @@ class TweetsController < ApplicationController
   end
 
   def edit
+
   end
 
   def new
     @tweet = Tweet.new
   end
 
-  def _form
 
 
   def create
@@ -35,9 +35,28 @@ class TweetsController < ApplicationController
      end
     end
   end
+
+def uppdate
+  respond_to do |format|
+    if @tweet.update(tweet_params)
+    format.html {redirect_to @tweet, notice: 'Tweet was updated!'}
+    else format.html {render :edit}
+    end
+  end 
+end 
+
+def destroy
+@tweet.destroy 
+respond_to do |format|
+  format.html {redirect_to tweets_url, notice: 'Tweet was deleted for you.'}
+end
+end
+
 private
-def set_tweet@tweet = Tweet.find(params[:id])
-  rais.logger.info @tweet
+
+def set_tweet 
+  @tweet = Tweet.find(params[:id])
+  
 end
 
 
@@ -48,5 +67,4 @@ end
       params.require(:tweet).permit(:message, :user_id)
     end
 end
-end
-end
+
