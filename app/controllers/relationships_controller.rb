@@ -1,7 +1,7 @@
 class RelationshipsController < ApplicationController
 
   def create
-      @relationship = current_user.relationship.build(friend_id: params[:friend_id])
+      @relationship = current_user.relationships.build(friend_id: params[:friend_id])
 
       if @relationship.save
         flash[:notice] = "Followed Succesfully"
@@ -13,7 +13,7 @@ class RelationshipsController < ApplicationController
     end
 def destroy
   @relationship  =
-  current_user.relationship.find(params[:id])
+  current_user.relationships.find(params[:id])
   @relationship.destroy
   flash[:notice] = "No Longer Following"
   redirect_to profile_path(current_user.id)

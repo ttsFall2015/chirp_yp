@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
 
-  get 'profiles/:id' => "profiles#show", as: :profile
-  get 'profiles' => "profiles#index"
-
-
   resources :tweets do
     resources :like
   end
 
-  resource :Relationship
+  resource :relationships
+
+  get 'like/create'
+
+get 'profiles/:id' => "profiles#show", as: :profile
+get 'profiles' => "profiles#index"
 
   root "tweets#index"
 
