@@ -5,7 +5,17 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :tweets
+  has_many :relationships
+  has_many :friend, through: : relationships
+  has_many :inverse_relationships, class_name: "relationship", foreign_key: "friend_id"
+  has_many :inverse_friends, through: : inverse_relationships, source: : user
+  has_many :likes
 
-  validates :username, presence: true, uniqueness: true 
+
+  validates :username, presence: true, uniqueness: true
+
+  def likes?(tweet)
+      tweet.likes.where(user_id: id).any?
+  end
 
 end
