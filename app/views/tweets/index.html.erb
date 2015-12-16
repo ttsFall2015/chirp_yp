@@ -1,8 +1,8 @@
-<h1>Tweet#index</h1>
+<h1>Tweet</h1>
 <!-- <p>Find me in app/views/tweet/index.html.erb</p> -->
 <p id="notice"><%= notice %></p>
 
-<h1>Whatever, this is just a header</h1>
+<h1>Welcome the Cali and Ben Chirp</h1>
 
 <table>
   <thead>
@@ -28,3 +28,5 @@
 <%= link_to 'New Tweet', new_tweet_path, class: "btn btn-primary" %>
 
 <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+<%= link_to "Like", '...', class: 'vote', method: :put, remote: true %>
+<%= link_to "unLike", '...', class: 'vote', method: :put, remote: true %>

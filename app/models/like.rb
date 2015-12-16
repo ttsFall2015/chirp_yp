@@ -1,4 +1,4 @@
 class Like < ActiveRecord::Base
-  belongs_to:  user
-  belongs_to:  friend
+  belongs_to :user
+  belongs_to :friend
 end

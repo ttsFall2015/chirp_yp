@@ -1,3 +1,26 @@
 // Place all the styles related to the Profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+background-image: url(http://2.bp.blogspot.com/-0qo-iPVCi1c/UWeeVRSw34I/AAAAAAAAE9E/KzISd3LOtaY/s1600/feathers_pattern.png);
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+h4 {
+  color: white;
+}
+
+table {
+background-color: #fd6767;
+font-size: 20px;
+color: white;
+
+}

@@ -36,35 +36,34 @@ class TweetsController < ApplicationController
     end
   end
 
-def uppdate
+def update
   respond_to do |format|
     if @tweet.update(tweet_params)
     format.html {redirect_to @tweet, notice: 'Tweet was updated!'}
     else format.html {render :edit}
     end
-  end 
-end 
+  end
+end
 
 def destroy
-@tweet.destroy 
+@tweet.destroy
 respond_to do |format|
   format.html {redirect_to tweets_url, notice: 'Tweet was deleted for you.'}
-end
+ end
 end
 
 private
 
-def set_tweet 
+def set_tweet
   @tweet = Tweet.find(params[:id])
-  
+
 end
 
 
-  def person_params
+  def tweet_params
     # It's mandatory to specify the nested attributes that should be whitelisted.
      # If you use `permit` with just the key that points to the nested attributes hash,
      # it will return an empty hash.
       params.require(:tweet).permit(:message, :user_id)
     end
 end
-

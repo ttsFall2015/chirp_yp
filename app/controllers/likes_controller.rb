@@ -3,19 +3,84 @@ class LikesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_tweet
 
-  def create
-    @tweet.like.where(user_id;
-    current_user.id).first_or_create
+  def index
+     @tweet = Tweet.all
+   end
 
-    respond_to do |format|
-      format.html {redirect_to request.referrer}
-    end
+   def show
 
-  end
+   end
 
-private
+   def new
+     @tweet = Tweet.new
+   end
 
-  def set_tweet
-    @tweet = Tweet.find(params[:tweet_id])
-  end
-end
+   def edit
+   end
+
+   def create
+     @tweet = Tweet.new(tweet_params)
+
+     respond_to do |format|
+       if @tweet.save
+         format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
+       else
+         format.html { render :new }
+       end
+     end
+   end
+
+     def update
+     respond_to do |format|
+         if @tweet.update(tweet_params)
+           format.html { redirect_to @tweet, notice: 'Post was successfully updated.' }
+       else
+         format.html { render :edit }
+
+       end
+     end
+   end
+
+   def destroy
+       @tweet.destroy
+     respond_to do |format|
+       format.html { redirect_to tweets_url, notice: 'Tweet was successfully destroyed.' }
+     end
+   end
+
+   private
+
+   def set_tweet
+     @tweet = Tweet.find(params[:id])
+     end
+
+   def tweet_params
+     params.require(:tweet).permit(:message, :user_id)
+   end
+ end
+ 
+
+
+#   def create
+#     @tweet.like.where(user_id;
+#     current_user.id).first_or_create
+#
+#     respond_to do |format|
+#       format.html {redirect_to request.referrer}
+#     end
+#
+#   end
+#   def destroy
+#     @tweet.likes.where(user_id: current_user.id).destroy_all
+#
+#   respond_to do |format|
+#     format.html { redirect_to tweets_url, notice: 'Tweet was successfully destroyed.' }
+#   end
+# end
+#
+# private
+#
+#   def set_tweet
+#     @tweet = Tweet.find(params[:tweet_id])
+#   end
+# end
