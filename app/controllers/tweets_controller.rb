@@ -28,8 +28,7 @@ class TweetsController < ApplicationController
 
    respond_to do |format|
     if @tweet.save
-      format.html {redirect_to @tweet, notice: 'Tweet
-        was successfully created.'}
+      format.html {redirect_to @tweet, notice: 'Tweet was successfully created.'}
     else
       format.html {render :new}
      end
@@ -51,6 +50,7 @@ respond_to do |format|
   format.html {redirect_to tweets_url, notice: 'Tweet was deleted for you.'}
  end
 end
+
 
 private
 

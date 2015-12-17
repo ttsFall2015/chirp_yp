@@ -15,8 +15,8 @@ class LikesController < ApplicationController
      @tweet = Tweet.new
    end
 
-   def edit
-   end
+  #  def edit
+  #  end
 
    def create
      @tweet = Tweet.new(tweet_params)
@@ -58,29 +58,3 @@ class LikesController < ApplicationController
      params.require(:tweet).permit(:message, :user_id)
    end
  end
- 
-
-
-#   def create
-#     @tweet.like.where(user_id;
-#     current_user.id).first_or_create
-#
-#     respond_to do |format|
-#       format.html {redirect_to request.referrer}
-#     end
-#
-#   end
-#   def destroy
-#     @tweet.likes.where(user_id: current_user.id).destroy_all
-#
-#   respond_to do |format|
-#     format.html { redirect_to tweets_url, notice: 'Tweet was successfully destroyed.' }
-#   end
-# end
-#
-# private
-#
-#   def set_tweet
-#     @tweet = Tweet.find(params[:tweet_id])
-#   end
-# end
